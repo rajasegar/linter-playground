@@ -4,7 +4,17 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
-    // Add options here
+      codemirror: {
+        themes: ['solarized'],
+        modes: ['javascript', 'handlebars'],
+        addonFiles: [
+          'fold/foldcode.js', 
+          'fold/foldgutter.js',
+          'fold/foldgutter.css',
+          'edit/matchbrackets.js',
+          'fold/brace-fold.js'
+        ]
+      }
   });
 
   // Use `app.import` to add additional libraries to the generated
