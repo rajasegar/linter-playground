@@ -5,9 +5,9 @@
     <PowerSelect @selected={{language}} @options={{languages}} @onChange={{action (mut language)}} as |lang|>
       {{lang}}
     </PowerSelect>
-    <span class="label-text">Parser:</span>
-    <PowerSelect @selected={{parser}} @options={{parsers}} @onChange={{action (mut parser)}} as |parser|>
-      {{parser}}
+    <span class="label-text">Rule Type:</span>
+    <PowerSelect @selected={{ruleType}} @options={{ruleTypes}} @onChange={{action (mut ruleType)}} as |ruleType|>
+      {{ruleType}}
     </PowerSelect>
   </div>
   <div id="options">
@@ -18,17 +18,15 @@
 <main>
   <RuleMaker 
   @mode={{mode}} 
-  @code={{sampleCode}}
+  @code={{code}}
+  @ruleType={{ruleType}}
   @parser={{parser}}>
   </RuleMaker>
 </main>
 <footer>
   <p>
     Built with <a href="https://emberjs.com">Ember {{emberVersion}}</a> |
-    <a href="https://github.com/rajasegar/ast-node-builder">ast-node-builder:  {{nodeBuilderVersion}}</a> |
-    <a href="https://rajasegar.github.io/ast-finder">AST-Finder</a> |
-    <a href="https://rajasegar.github.io/jarvis">JARVIS</a> |
-    <a href="https://github.com/rajasegar/ast-builder">Github</a> |
-    <a href="https://github.com/rajasegar/ast-builder/issues">Report issues</a> 
+    <a href="https://github.com/rajasegar/linter-playground">Github</a> |
+    <a href="https://github.com/rajasegar/linter-playground/issues">Report issues</a> 
   </p>
 </footer>
