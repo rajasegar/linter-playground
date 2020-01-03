@@ -53,6 +53,7 @@
     "node": "8.* || >= 10.*"
   },
   "dependencies": {
+    "@glimmer/syntax": "^0.45.2",
     "recast": "^0.18.5"
   }
 }

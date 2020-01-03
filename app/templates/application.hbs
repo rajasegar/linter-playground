@@ -10,6 +10,7 @@
       {{ruleType}}
     </PowerSelect>
   </div>
+  <p>Recommended: <Input @type="checkbox" @click={{action "toggleRecommended"}}/></p>
   <div id="options">
     <p>DarkMode: <Input @type="checkbox" @click={{action "toggleDarkMode"}}/></p>
   </div>
@@ -17,10 +18,10 @@
 </header>
 <main>
   <RuleMaker 
-  @mode={{mode}} 
+  @language={{language}} 
   @code={{code}}
   @ruleType={{ruleType}}
-  @parser={{parser}}>
+  @recommended={{recommended}}>
   </RuleMaker>
 </main>
 <footer>

@@ -18,9 +18,13 @@ export default Controller.extend({
   code: jsCode,
   language: 'Javascript',
   ruleType: 'problem',
+  recommended: false,
   actions: {
     toggleDarkMode() {
       this.customize.toggleDarkMode();
+    },
+    toggleRecommended() {
+      this.toggleProperty('recommended');
     }
   },
   init() {
