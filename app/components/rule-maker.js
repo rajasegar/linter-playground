@@ -22,8 +22,8 @@ export default Component.extend({
     let node = _ast.program.body[0];
 
     let _rule = `/**
- * @fileoverview Rule to disallow unnecessary semicolons
- * @author Nicholas C. Zakas
+ * @fileoverview Rule to disallow unnecessary stuff
+ * @author Ember Tomster
  */
 
 "use strict";
