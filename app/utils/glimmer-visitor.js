@@ -17,6 +17,14 @@ function elementNode(node) {
     }
   }`;
 }
+
+function blockStatement(node) {
+  return `BlockStatement(node) {
+    if(node.path.original === '${node.path.original}') {
+
+    }
+  }`;
+}
 export default function glimmerVisitor(node) {
 
   let str = '';
@@ -31,6 +39,10 @@ export default function glimmerVisitor(node) {
 
     case 'ElementNode':
       str = elementNode(node);
+      break;
+
+    case 'BlockStatement':
+      str = blockStatement(node);
       break;
 
     default:

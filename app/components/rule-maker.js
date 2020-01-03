@@ -6,6 +6,8 @@ import recastBabel from 'recastBabel';
 import { preprocess } from '@glimmer/syntax';
 import buildVisitor from 'linter-playground/utils/build-visitor';
 import glimmerVisitor from 'linter-playground/utils/glimmer-visitor';
+import eslintTemplate from 'linter-playground/utils/eslint-template';
+import glimmerTemplate from 'linter-playground/utils/glimmer-template';
 
 function filterAstNodes(key, value) {
   return ["loc","tokens"].includes(key) ? undefined : value;
@@ -41,44 +43,19 @@ export default Component.extend({
     let node;
     let _visitor = '';
     let _ast = this.get('_ast');
+    let _rule = '';
     if(_lang === 'Javascript') {
      node = _ast.program.body[0];
       _visitor = buildVisitor(node);
+     _rule = eslintTemplate(this.get('ruleType'), this.get('recommended'), _visitor);
     } else {
      node = _ast.body[0];
       _visitor = glimmerVisitor(node);
+     _rule = glimmerTemplate(this.get('ruleType'), this.get('recommended'), _visitor);
     }
 
-    let _rule = `/**
- * @fileoverview Rule to disallow unnecessary stuff
- * @author Linter Playground
- */
 
-"use strict";
 
-//------------------------------------------------------------------------------
-// Rule Definition
-//------------------------------------------------------------------------------
-
-module.exports = {
-    meta: {
-        type: "${this.get('ruleType')}",
-
-        docs: {
-            description: "The decription of your rule goes here...",
-            category: "Possible Errors",
-            recommended: ${this.get('recommended')},
-            url: "https://eslint.org/docs/rules/no-bad-stuff"
-        },
-        fixable: "code",
-        schema: [] // no options
-    },
-    create: function(context) {
-        return {
-          ${_visitor}
-        };
-    }
-};`;
     return recast.prettyPrint(recastBabel.parse(_rule), { tabWidth: 2 }).code;
   }),
   init() {
