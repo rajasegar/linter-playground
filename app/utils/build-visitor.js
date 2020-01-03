@@ -62,6 +62,11 @@ function functionDeclaration(node) {
 
   }`;
 }
+
+function variableDeclaration(node) {
+  return `VariableDeclaration(node) {
+  }`;
+}
 export default function buildVisitor(node) {
   let str = '';
   switch(node.type) {
@@ -87,6 +92,10 @@ export default function buildVisitor(node) {
 
     case 'FunctionDeclaration':
       str = functionDeclaration(node);
+      break;
+
+    case 'VariableDeclaration':
+      str = variableDeclaration(node);
       break;
 
     default:
