@@ -20,15 +20,6 @@ export default Component.extend({
   rule: computed('code', 'ruleType', function() {
     let _ast = recastBabel.parse(this.get('code'));
     let node = _ast.program.body[0];
-    switch(node.type) {
-      case 'ExpressionStatement':
-        node = node.expression;
-        break;
-
-      default:
-        console.log('Unknown node type => ', node.type); // eslint-disable-line
-        break;
-    }
 
     let _rule = `/**
  * @fileoverview Rule to disallow unnecessary semicolons
@@ -46,10 +37,10 @@ module.exports = {
         type: "${this.get('ruleType')}",
 
         docs: {
-            description: "disallow unnecessary semicolons",
+            description: "The decription of your rule goes here...",
             category: "Possible Errors",
             recommended: true,
-            url: "https://eslint.org/docs/rules/no-extra-semi"
+            url: "https://eslint.org/docs/rules/no-bad-stuff"
         },
         fixable: "code",
         schema: [] // no options
@@ -60,7 +51,6 @@ module.exports = {
         };
     }
 };`;
-    console.log(buildVisitor(node));
     return recast.prettyPrint(recastBabel.parse(_rule), { tabWidth: 2 }).code;
   }),
   init() {
