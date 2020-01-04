@@ -12,7 +12,7 @@
   </div>
   <p>Recommended: <Input @type="checkbox" @click={{action "toggleRecommended"}}/></p>
   <div id="options">
-    <p>DarkMode: <Input @type="checkbox" @click={{action "toggleDarkMode"}}/></p>
+    <DarkModeToggle/>
   </div>
   <span class="label-text">{{parser}}: <strong>{{parserVersion}}</strong></span>
 </header>

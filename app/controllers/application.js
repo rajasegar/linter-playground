@@ -1,5 +1,4 @@
 import Controller from '@ember/controller';
-import { inject as service } from '@ember/service';
 
 const LANGUAGES = [
   'Javascript',
@@ -14,15 +13,11 @@ const RULE_TYPES = [
 
 const jsCode = `foo.bar()`;
 export default Controller.extend({
-  customize: service(),
   code: jsCode,
   language: 'Javascript',
   ruleType: 'problem',
   recommended: false,
   actions: {
-    toggleDarkMode() {
-      this.customize.toggleDarkMode();
-    },
     toggleRecommended() {
       this.toggleProperty('recommended');
     }
